@@ -9,7 +9,7 @@ const userLoginRoute = require('./routes/user/userLoginRoute')
 const router = express.Router()
 
 router.post('/register', userRegisterRoute)
-router.post('/login', tokenAuth, userLoginRoute)
+router.post('/login', userLoginRoute)
 
 
 module.exports = router
