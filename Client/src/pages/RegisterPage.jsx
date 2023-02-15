@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import register from "../api/register.js";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 export const RegisterPage = () => {
 
@@ -29,6 +29,7 @@ export const RegisterPage = () => {
                 <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 <button>Register</button>
             </form>
+            <NavLink to="/login">Back to login</NavLink>
         </div>
     )
 }

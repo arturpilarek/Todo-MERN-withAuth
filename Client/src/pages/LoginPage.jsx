@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import login from "../api/login.js";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import {TokenContext} from "../App.jsx";
 
 export const LoginPage = () => {
@@ -32,6 +32,7 @@ export const LoginPage = () => {
                 <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 <button>Login</button>
             </form>
+            <NavLink to="/register">Register</NavLink>
         </div>
     )
 }
