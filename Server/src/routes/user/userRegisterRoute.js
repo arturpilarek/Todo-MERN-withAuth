@@ -16,7 +16,8 @@ module.exports = async (req, res) => {
         user = new User({
             email,
             password,
-            displayName
+            displayName,
+            todos: []
         });
 
         // hash user password
