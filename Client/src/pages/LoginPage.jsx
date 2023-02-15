@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
-import login from "../api/login.js";
+import login from "../api/userRequests/login.js";
 import { useNavigate, NavLink } from 'react-router-dom';
-import {TokenContext} from "../App.jsx";
+import {TokenContext, UserContext} from "../App.jsx";
 
 export const LoginPage = () => {
 
@@ -9,12 +9,15 @@ export const LoginPage = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [token, setToken] = useContext(TokenContext)
+    const [user, setUser] = useContext(UserContext)
+
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
         login(email, password)
-            .then(({token}) => {
+            .then(({token, userData}) => {
+                setUser(userData)
                 setToken(token)
                 navigate('/')
             })

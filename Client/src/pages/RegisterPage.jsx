@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import register from "../api/register.js";
+import register from "../api/userRequests/register.js";
 import { useNavigate, NavLink } from 'react-router-dom';
 
 export const RegisterPage = () => {

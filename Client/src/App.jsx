@@ -6,6 +6,7 @@ import { MainPage } from './pages/MainPage';
 import { RegisterPage } from './pages/RegisterPage'
 
 export const TokenContext = React.createContext(null);
+export const UserContext = React.createContext(null)
 
 const ProtectedRoute = ({ element }) => {
     const [token] = useContext(TokenContext);
@@ -14,11 +15,13 @@ const ProtectedRoute = ({ element }) => {
 
 function App() {
     const [token, setToken] = useState(null);
+    const [user, setUser] = useState(null)
 
     return (
         <div className="App">
             {/*Context work in this way, that every component wrapped in this provider will have access to variables in value field*/}
             <TokenContext.Provider value={[token, setToken]}>
+                <UserContext.Provider value={[user, setUser]}>
                 <Routes>
                     <Route
                         path="/"
@@ -27,6 +30,7 @@ function App() {
                     <Route path="login" element={<LoginPage />} />
                     <Route path="register" element={<RegisterPage />} />
                 </Routes>
+                </UserContext.Provider>
             </TokenContext.Provider>
         </div>
     );

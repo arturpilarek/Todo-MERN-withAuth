@@ -10,7 +10,8 @@ module.exports = async (req, res) => {
 
         //Here add new userData to be returned
         const userData = {
-            displayName: user.displayName
+            displayName: user.displayName,
+            user_id: user._id
         }
         if (!user) return res.status(400).json({ msg: 'This user does not exist' });
 

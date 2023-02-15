@@ -19,8 +19,8 @@ router.post('/register', userRegisterRoute)
 router.post('/login', userLoginRoute)
 
 //Todos routes
-router.post('/todos/',tokenAuth, createTodoRoute)
-router.get('/todos', tokenAuth, readTodosRoute)
+router.post('/todos/get', tokenAuth, readTodosRoute)
+router.post('/todos/create',tokenAuth, createTodoRoute)
 router.put('/todos/:id',tokenAuth, updateTodoRoute)
 router.delete('/todos/:id',tokenAuth, deleteTodoRoute)
 
