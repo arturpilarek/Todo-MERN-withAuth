@@ -5,9 +5,10 @@ import ClipLoader from "react-spinners/ClipLoader.js";
 import {TaskItem} from "../components/TaskItem.jsx";
 import {CreateNewTask} from "../components/CreateNewTask.jsx";
 import {useQuery} from "react-query";
+import {NavLink} from "react-router-dom";
 
 export const MainPage = () => {
-    const [token] = useContext(TokenContext)
+    const [token, setToken] = useContext(TokenContext)
     const [user] = useContext(UserContext)
 
     // const [todos, setTodos] = useState([])
@@ -29,15 +30,16 @@ export const MainPage = () => {
 
     return (
         <div>
-            <h2>MERN Todo</h2>
-            <p>{user.displayName}</p>
+            <h2>Taskify</h2>
+            <p>What's up {user.displayName}!</p>
             {isLoading
                 ? (<ClipLoader size={150}/>)
                 : todos.length === 0
                     ? <p>No tasks, maybe create one?</p>
                     : todos.map(todo => <TaskItem key={todo._id} todo={todo} />)
             }
-            <CreateNewTask />
+            <CreateNewTask/>
+            <NavLink style={{marginTop: '36px'}} to="/login">Logout</NavLink>
         </div>
     )
 }

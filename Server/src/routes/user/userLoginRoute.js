@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 module.exports = async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     try {
         // Check if the user exists
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ username });
 
         //Here add new userData to be returned
         const userData = {
@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
 
         // Check is the encrypted password matches
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ msg: 'Email or password incorrect' });
+        if (!isMatch) return res.status(400).json({ msg: 'Username or password incorrect' });
 
 
         // Return JWT payload

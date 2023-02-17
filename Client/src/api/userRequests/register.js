@@ -1,11 +1,11 @@
-export default (email, password) => {
+export default (username, password) => {
     return fetch(`${import.meta.env.VITE_API_URL}/register`, {
         method: 'POST',
         headers: {
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            email,
+            username,
             password
         })
     })

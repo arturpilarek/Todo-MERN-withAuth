@@ -4,14 +4,14 @@ import { useNavigate, NavLink } from 'react-router-dom';
 
 export const RegisterPage = () => {
 
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
     const handleRegister = (e) => {
         e.preventDefault()
-        register(email, password)
+        register(username, password)
             .then(() => {
                 navigate('/login')
             })
@@ -24,9 +24,11 @@ export const RegisterPage = () => {
         <div>
             <h1>Register</h1>
             <div style={{color: 'red'}}>{error}</div>
-            <form onSubmit={handleRegister}>
-                <input type="text" value={email} onChange={event => setEmail(event.target.value)}/>
-                <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
+            <form onSubmit={handleRegister} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', marginBottom: '12px'}}>
+                <label htmlFor="username-register">Username</label>
+                <input id="username-register" type="text" value={username} onChange={event => setUsername(event.target.value)} style={{marginBottom: '12px'}}/>
+                <label htmlFor="password-register">Password</label>
+                <input id="password-register" type="password" value={password} onChange={event => setPassword(event.target.value)} style={{marginBottom: '12px'}}/>
                 <button>Register</button>
             </form>
             <NavLink to="/login">Back to login</NavLink>

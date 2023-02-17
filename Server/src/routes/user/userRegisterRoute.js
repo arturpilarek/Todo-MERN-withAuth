@@ -3,18 +3,18 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 module.exports = async (req, res) => {
-    let { email, password, displayName } = req.body;
+    let { username, password, displayName } = req.body;
 
     try {
         // check if the user already exists
-        let user = await User.findOne({ email });
-        if (user) return res.status(400).json({ msg: 'Email already exists' });
+        let user = await User.findOne({ username });
+        if (user) return res.status(400).json({ msg: 'Username already exists' });
 
-        if (!displayName) displayName = email;
+        if (!displayName) displayName = username;
 
         // create new user
         user = new User({
-            email,
+            username,
             password,
             displayName
         });

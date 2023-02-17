@@ -23,7 +23,7 @@ export const CreateNewTask = () => {
     return (
         <div>
             <h3>Create new task</h3>
-            <form onSubmit={(e) => {
+            <form style={{display: 'flex', alignItems: 'center', gap: '8px'}} onSubmit={(e) => {
                 e.preventDefault()
                 if(!text) return
                 createTodo({
@@ -34,8 +34,9 @@ export const CreateNewTask = () => {
 
                 <label htmlFor="todo-text">Text</label>
                 <input id="todo-text" type="text" value={text} onChange={(e) => setText(e.target.value)} />
-                <label htmlFor="todo-priority">Priority</label>
+                <label htmlFor="todo-priority">Priority
                 <input id="todo-priority" type="checkbox" checked={priority} onChange={(e) => setPriority(e.target.checked)}/>
+                </label>
                 <button type="submit">Create</button>
             </form>
         </div>

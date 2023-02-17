@@ -5,7 +5,7 @@ import {TokenContext, UserContext} from "../App.jsx";
 
 export const LoginPage = () => {
 
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [token, setToken] = useContext(TokenContext)
@@ -15,7 +15,7 @@ export const LoginPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        login(email, password)
+        login(username, password)
             .then(({token, userData}) => {
                 setUser(userData)
                 setToken(token)
@@ -30,10 +30,12 @@ export const LoginPage = () => {
         <div>
             <h1>Login</h1>
             <div style={{color: 'red'}}>{error}</div>
-            <form onSubmit={handleLogin}>
-                <input type="text" value={email} onChange={event => setEmail(event.target.value)}/>
-                <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
-                <button>Login</button>
+            <form onSubmit={handleLogin} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px'}}>
+                <label htmlFor="username-login">Username</label>
+                <input style={{marginBottom: '12px'}} type="text" value={username} id="username-login" onChange={event => setUsername(event.target.value)}/>
+                <label htmlFor="password-login">Password</label>
+                <input  type="password" value={password} id="password-login" onChange={event => setPassword(event.target.value)}/>
+                <button style={{marginBottom: '8px', marginTop: "8px"}}>Login</button>
             </form>
             <NavLink to="/register">Register</NavLink>
         </div>

@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
-const router = require('./router')
+const router = require('./src/router')
 
 dotenv.config()
 

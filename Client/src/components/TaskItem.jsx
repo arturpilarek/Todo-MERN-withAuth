@@ -43,11 +43,13 @@ export const TaskItem = ({todo}) => {
     });
 
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
-            <input type="checkbox" checked={todo.completed} onChange={() => { updateTodo({...todo, completed: !todo.completed}) }} />
+        <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            <label htmlFor="completed">Completion
+            <input type="checkbox" id="completed" checked={todo.completed} onChange={() => { updateTodo({...todo, completed: !todo.completed}) }} />
+            </label>
             <input style={{height: 'min-content'}} type="text" value={text} onChange={(e) => setText(e.target.value)}/>
-            <input type="checkbox" checked={todo.priority} onChange={() => { updateTodo({...todo, priority: !todo.priority}) }} />
             <p>{todo.priority ? 'Priority' : 'No priority'}</p>
+            <input type="checkbox" checked={todo.priority} onChange={() => { updateTodo({...todo, priority: !todo.priority}) }} />
             <button onClick={() => deleteTodo(todo)}>Delete</button>
         </div>
     )
